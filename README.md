@@ -62,3 +62,8 @@ Para que o cadastro ocorra deverá haver validações em dois níveis. Frontend 
 - Teste unitário de backend;
 - Teste de integração backend;
 - SPA.
+- Usabilidade (A usabilidade das funcionalidades fica a cargo do desenvolvedor) :D
+
+
+### Entrega
+Deixar um repositório público e nos enviar por e-mail - o mesmo e-mail que foi enviado o teste.

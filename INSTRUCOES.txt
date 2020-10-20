@@ -1,0 +1,27 @@
+
+//ler/executa  e os arquivos dockerfile
+docker-compose build
+
+//subir os containers
+docker-compose up -d
+
+//instalar dependencias do laravel
+docker-compose exec app composer install
+
+//criar as migrates no banco
+docker-compose exec app php artisan migrate 
+
+//node modules
+npm install
+
+//apos ser efetuado CONTRATO, executa a (job) envia para a fila de envio de email, o arquivo .ENV, contem as configuracoes de EMAIL
+docker-compose exec app php artisan queue:work
+
+
+//apos subir o sistema em : http://localhost:8080/
+npm run watch
+
+
+//Utilizado soft delete na exclusao das propriedades, onde setara uma flag no banco para nao ser exibido
+
+//apos ser efetuado um CONTRATO X PROPRIEDADE, o status da listagem de propriedades,mudara para CONTRATADO

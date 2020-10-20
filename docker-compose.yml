@@ -1,33 +1,35 @@
-# v2 syntax
 version: '2'
 
-# Named volumes
-volumes:
-  test-mysql-data:
-    driver: local
-
 services:
-  # MySQL (5.7)
-  mysql:
-    image: mysql:5.7
-    container_name: test-mysql
+  web:
+    build:
+      context: ./
+      dockerfile: web.docker
     volumes:
-      - test-mysql-data:/var/lib/mysql
+      - ./:/var/www
     ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=test
-      - MYSQL_DATABASE=test
-      - MYSQL_USER=test
-      - MYSQL_PASSWORD=test
-
-  # PHP (with Caddy)
-  app:
-    image: ambientum/php:7.2-nginx
-    container_name: test-app
-    volumes:
-      - .:/var/www/app
-    ports:
-      - "80:8080"
+      - "8080:80"
     links:
-      - mysql
+      - app
+  app:
+    build:
+      context: ./
+      dockerfile: app.docker
+    volumes:
+      - ./:/var/www
+    links:
+      - db
+    environment:
+      - DB_PORT=3306
+      - DB_HOST=db
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=db_docker
+    ports:
+      - "33061:3306"
+
+

@@ -68,6 +68,26 @@ class ContractObserver
      */
     public function updating(Contract $contract)
     {
+        $validateDocument = new ValidateDocuments;
+        if ($contract->person == 'PF') {
+            $document = $validateDocument->validaCPF($contract->document);
+            if ($document == true) {
+                $contract->document = $contract->document;
+            } else {
+                throw ValidationException::withMessages([
+                    'message' => trans('messages.cpf')
+                ]);
+            }
+        } else {
+            $document = $validateDocument->validaCNPJ($contract->document);
+            if ($document == true) {
+                $contract->document = $contract->document;
+            } else {
+                throw ValidationException::withMessages([
+                    'message' => trans('messages.cnpj')
+                ]);
+            }
+        }
         $findContract = Contract::where('id', $contract->id)->first();
         $property = Property::find($contract->property_id);
 

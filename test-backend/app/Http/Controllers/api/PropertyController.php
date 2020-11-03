@@ -15,13 +15,12 @@ use App\Repositories\PropertyRepository;
  *   path="/propriedades",
  *     tags={"Propriedades"},
  *     @OA\Parameter(
- *         description="ID do Proprietário",
+ *         description="E-mail do Proprietário",
  *         in="query",
- *         name="property_owner_id",
+ *         name="email_owner",
  *         required=true,
  *         @OA\Schema(
  *           type="string",
- *           format="integer"
  *         )
  *     ),
  *     @OA\Parameter(
@@ -117,13 +116,12 @@ use App\Repositories\PropertyRepository;
  *         )
  *     ),
  *     @OA\Parameter(
- *         description="ID do Proprietário",
+ *         description="E-mail do Proprietário",
  *         in="query",
- *         name="property_owner_id",
+ *         name="email_owner",
  *         required=true,
  *         @OA\Schema(
  *           type="string",
- *           format="integer"
  *         )
  *     ),
  *     @OA\Parameter(
@@ -214,5 +212,10 @@ class PropertyController extends Controller
     public function __construct(PropertyRepository $repository)
     {
         $this->repository = $repository;
+    }
+
+    public function contract($id)
+    {
+        return $this->repository->contract($id);
     }
 }

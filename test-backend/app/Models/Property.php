@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     protected $fillable = [
-        'property_owner_id',
+        'email_owner',
         'street',
         'number',
         'neighborhood',
@@ -16,14 +16,18 @@ class Property extends Model
         'status'
     ];
 
+     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at', 'updated_at',
+    ];
+
     public function setStateAttribute($value)
     {
         $this->attributes['state'] = mb_strtoupper($value);
-    }
-
-    public function propertyOwner()
-    {
-        return $this->belongsTo(PropertyOwner::class, 'property_owner_id', 'id');
     }
 
     public function contract()

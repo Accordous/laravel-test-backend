@@ -24,7 +24,7 @@ class PropertyRequest extends FormRequest
     public function rules()
     {
         return [
-            'property_owner_id' => 'required',
+            'email_owner' => "required|email",
             'street' => 'required',
             'number' => 'required',
             'neighborhood' => 'required',

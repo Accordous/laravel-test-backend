@@ -15,8 +15,7 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('property_owner_id');
-            $table->foreign('property_owner_id')->references('id')->on('property_owners')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('email_owner')->comment('E-mail do Proprietário');
             $table->string('street')->comment('Rua');
             $table->string('number')->comment(('O número de uma Residência pode conter Strings'));
             $table->string('neighborhood')->comment('Bairro');

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\ValidateDocuments;
 use Illuminate\Database\Eloquent\Model;
 
 class Contract extends Model
@@ -14,12 +15,22 @@ class Contract extends Model
         'name',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at', 'updated_at',
+    ];
+
     public function getDocumentAttribute($value)
     {
+        $validateDocument = new ValidateDocuments;
         if ($this->person == 'PJ') {
-            return $this->Mask("##.###.###/####-##", $value);
+            return $validateDocument->Mask("##.###.###/####-##", $value);
         }
-        return $this->Mask("###.###.###-##", $value);
+        return $validateDocument->Mask("###.###.###-##", $value);
     }
 
     public function setDocumentAttribute($value)
@@ -30,14 +41,5 @@ class Contract extends Model
     public function property()
     {
         return $this->belongsTo(Property::class, 'property_id', 'id');
-    }
-
-    function Mask($mask, $str)
-    {
-        $str = str_replace(" ", "", $str);
-        for ($i = 0; $i < strlen($str); $i++) {
-            $mask[strpos($mask, "#")] = $str[$i];
-        }
-        return $mask;
     }
 }

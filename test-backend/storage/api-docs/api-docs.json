@@ -222,13 +222,12 @@
                 ],
                 "parameters": [
                     {
-                        "name": "property_owner_id",
+                        "name": "email_owner",
                         "in": "query",
-                        "description": "ID do Proprietário",
+                        "description": "E-mail do Proprietário",
                         "required": true,
                         "schema": {
-                            "type": "string",
-                            "format": "integer"
+                            "type": "string"
                         }
                     },
                     {
@@ -337,13 +336,12 @@
                         }
                     },
                     {
-                        "name": "property_owner_id",
+                        "name": "email_owner",
                         "in": "query",
-                        "description": "ID do Proprietário",
+                        "description": "E-mail do Proprietário",
                         "required": true,
                         "schema": {
-                            "type": "string",
-                            "format": "integer"
+                            "type": "string"
                         }
                     },
                     {
@@ -417,127 +415,6 @@
             "delete": {
                 "tags": [
                     "Propriedades"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": false,
-                        "schema": {
-                            "type": "string",
-                            "format": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Deleta um registro pelo ID."
-                    }
-                }
-            }
-        },
-        "/dono-propriedade": {
-            "get": {
-                "tags": [
-                    "Donos das Propriedades"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Retorna todas as contas cadastradas."
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Donos das Propriedades"
-                ],
-                "parameters": [
-                    {
-                        "name": "email_owner",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Conta criada",
-                    "required": false,
-                    "content": {
-                        "application/json": {},
-                        "XMLHttpRequest": {}
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Retorna o registro criado"
-                    }
-                }
-            }
-        },
-        "/dono-propriedade/{id}": {
-            "get": {
-                "tags": [
-                    "Donos das Propriedades"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "format": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Retorna um registro pelo ID."
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Donos das Propriedades"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "format": "integer"
-                        }
-                    },
-                    {
-                        "name": "email_owner",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Conta criada",
-                    "required": false,
-                    "content": {
-                        "application/json": {},
-                        "XMLHttpRequest": {}
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Retorna o registro Atualizado"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Donos das Propriedades"
                 ],
                 "parameters": [
                     {

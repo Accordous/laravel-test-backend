@@ -12,6 +12,11 @@ class PropertyRepository extends AbstractRepository
 
     public function contract($id)
     {
-        return Property::where('id', $id)->with('contract')->first();
+        $property = Property::where('id', $id)->with('contract')->first();
+        if($property){
+            return $property;
+        }else {
+            return response()->json(['error' => trans('messages.404')], 404);
+        }
     }
 }

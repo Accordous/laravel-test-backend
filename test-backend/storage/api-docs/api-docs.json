@@ -433,6 +433,29 @@
                     }
                 }
             }
+        },
+        "/propriedades-contratos/{id}": {
+            "get": {
+                "tags": [
+                    "Propriedades"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um registro pelo ID."
+                    }
+                }
+            }
         }
     }
 }

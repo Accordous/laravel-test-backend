@@ -204,6 +204,20 @@ use App\Repositories\PropertyRepository;
  *     ),
  *     @OA\Response(response="200", description="Deleta um registro pelo ID.")
  * ),
+ *   @OA\Get(
+ *     path="/propriedades-contratos/{id}",
+ *     tags={"Propriedades"},
+ *     @OA\Parameter(
+ *         in="path",
+ *         name="id",
+ *         required=true,
+ *         @OA\Schema(
+ *           type="string",
+ *           format="integer"
+ *         )
+ *     ),
+ *     @OA\Response(response="200", description="Retorna um registro pelo ID.")
+ * ),
  */
 class PropertyController extends Controller
 {

@@ -20,7 +20,7 @@ class ContractObserver
         $validateProperty = Contract::where('property_id', $contract->property_id)->first();
         if ($validateProperty) {
             throw ValidationException::withMessages([
-                'message' => 'Propriedade já pertence a outro contrato!'
+                'message' => trans('messages.property')
             ]);
         }
         $validateDocument = new ValidateDocuments;
@@ -30,7 +30,7 @@ class ContractObserver
                 $contract->document = $contract->document;
             } else {
                 throw ValidationException::withMessages([
-                    'message' => 'CPF Inválido!'
+                    'message' => trans('messages.cpf')
                 ]);
             }
         } else {
@@ -39,7 +39,7 @@ class ContractObserver
                 $contract->document = $contract->document;
             } else {
                 throw ValidationException::withMessages([
-                    'message' => 'CNPJ Inválido!'
+                    'message' => trans('messages.cnpj')
                 ]);
             }
         }
@@ -73,7 +73,7 @@ class ContractObserver
 
         if ($property->status == 'C') {
             throw ValidationException::withMessages([
-                'message' => 'Propriedade já pertence a outro contrato!'
+                'message' => trans('messages.property')
             ]);
         } elseif ($findContract->property_id != $contract->property_id) {
             $oldProperty = Property::find($findContract->property_id);

@@ -7,5 +7,8 @@ return [
     'created' => 'Successfully created',
     'updated' => 'Successfully updated',
     'deleted' => 'Successfully deleted',
-    '404' => 'Data not found'
+    '404' => 'Data not found',
+    'cpf' => 'Invalid CPF!',
+    'cnpj' => 'Invalid CNPJ!',
+    'property' => 'The property already belongs to another contract'
 ];

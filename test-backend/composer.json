@@ -9,9 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
+        "darkaonline/l5-swagger": "5.8.*",
         "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "^2.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "lucascudo/laravel-pt-br-localization": "^1.1",
+        "zircote/swagger-php": "^3.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

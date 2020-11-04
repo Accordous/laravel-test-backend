@@ -1,0 +1,461 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Accordous Api Test Backend Documentation",
+        "description": "Documentação dos métodos da api de backend",
+        "contact": {
+            "email": "cristian.aob@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api",
+            "description": "API Accordous"
+        }
+    ],
+    "paths": {
+        "/contratos": {
+            "get": {
+                "tags": [
+                    "Contratos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna todas as contas cadastradas."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Contratos"
+                ],
+                "parameters": [
+                    {
+                        "name": "property_id",
+                        "in": "query",
+                        "description": "ID da Propriedade",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
+                    },
+                    {
+                        "name": "person",
+                        "in": "query",
+                        "description": "PF ou PJ (PF => Pessoa Fisíca, PJ => Pessoa Jurídica)",
+                        "required": false,
+                        "schema": {
+                            "type": "enum"
+                        }
+                    },
+                    {
+                        "name": "document",
+                        "in": "query",
+                        "description": "CPF OU CNPJ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "contractor_email",
+                        "in": "query",
+                        "description": "Email do Contratante",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do Contratante",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Conta criada",
+                    "required": false,
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Retorna o registro criado"
+                    }
+                }
+            }
+        },
+        "/contratos/{id}": {
+            "get": {
+                "tags": [
+                    "Contratos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um registro pelo ID."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Contratos"
+                ],
+                "parameters": [
+                    {
+                        "name": "property_id",
+                        "in": "query",
+                        "description": "ID da Propriedade",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
+                    },
+                    {
+                        "name": "person",
+                        "in": "query",
+                        "description": "PF ou PJ (PF => Pessoa Fisíca, PJ => Pessoa Jurídica)",
+                        "required": false,
+                        "schema": {
+                            "type": "enum"
+                        }
+                    },
+                    {
+                        "name": "document",
+                        "in": "query",
+                        "description": "CPF OU CNPJ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "contractor_email",
+                        "in": "query",
+                        "description": "Email do Contratante",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do Contratante",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Conta criada",
+                    "required": false,
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Retorna o registro Atualizado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Contratos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleta um registro pelo ID."
+                    }
+                }
+            }
+        },
+        "/propriedades": {
+            "get": {
+                "tags": [
+                    "Propriedades"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna todas as contas cadastradas."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Propriedades"
+                ],
+                "parameters": [
+                    {
+                        "name": "email_owner",
+                        "in": "query",
+                        "description": "E-mail do Proprietário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "street",
+                        "in": "query",
+                        "description": "Rua",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "number",
+                        "in": "query",
+                        "description": "Numero da Casa",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "neighborhood",
+                        "in": "query",
+                        "description": "Bairro",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "Cidade",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "Estado, exemplo: MG",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "C ou NC (C => Contratado, NC => Não Contratado)",
+                        "required": false,
+                        "schema": {
+                            "type": "enum"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Conta criada",
+                    "required": false,
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Retorna o registro criado"
+                    }
+                }
+            }
+        },
+        "/propriedades/{id}": {
+            "get": {
+                "tags": [
+                    "Propriedades"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um registro pelo ID."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Propriedades"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
+                    },
+                    {
+                        "name": "email_owner",
+                        "in": "query",
+                        "description": "E-mail do Proprietário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "street",
+                        "in": "query",
+                        "description": "Rua",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "number",
+                        "in": "query",
+                        "description": "Numero da Casa",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "neighborhood",
+                        "in": "query",
+                        "description": "Bairro",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "Cidade",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "Estado, exemplo: MG",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "C ou NC (C => Contratado, NC => Não Contratado)",
+                        "required": false,
+                        "schema": {
+                            "type": "enum"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Conta criada",
+                    "required": false,
+                    "content": {
+                        "application/json": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Retorna o registro Atualizado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Propriedades"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleta um registro pelo ID."
+                    }
+                }
+            }
+        },
+        "/propriedades-contratos/{id}": {
+            "get": {
+                "tags": [
+                    "Propriedades"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um registro pelo ID."
+                    }
+                }
+            }
+        }
+    }
+}
